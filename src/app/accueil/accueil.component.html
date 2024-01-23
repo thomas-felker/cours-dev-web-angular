@@ -6,6 +6,8 @@
   <span>Aucun employé actuellement en base</span>
 </ng-template>
 
-<button id="refresh" mat-fab color="primary" (click)="getRandomEmployee()">
-  <mat-icon>refresh</mat-icon>
-</button>
+<section>
+  <button id="refresh" mat-fab appChangeBackgroundColor (click)="getRandomEmployee()">
+    <mat-icon>refresh</mat-icon>
+  </button>
+</section>

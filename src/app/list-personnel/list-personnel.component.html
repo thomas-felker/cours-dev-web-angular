@@ -8,7 +8,7 @@
     <mat-list>
       <mat-list-item *ngFor="let employee of personnel">
         <img mat-list-avatar src="{{ employee.photo }}" alt="Avatar de l'employé"/>
-        <h3 mat-line>{{ employee.prenom }} {{ employee.nom }} </h3>
+        <h3 mat-line> <span badgeChef [employee]="employee!"></span> {{ employee.prenom }} {{ employee.nom }} </h3>
         <p mat-line>
           <span> {{ employee.email }} </span> — <span>{{ employee.telephone }} </span>
         </p>

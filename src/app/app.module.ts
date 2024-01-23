@@ -33,6 +33,8 @@ import {MatMenuModule} from "@angular/material/menu";
 import {TranslateLoader, TranslateModule} from '@ngx-translate/core';
 import {TranslateHttpLoader} from "@ngx-translate/http-loader";
 import { ExemplePipePipe } from './partage/exemple-pipe/exemple-pipe.pipe';
+import { ChangeBackgroundColorDirective } from './partage/change-background-color/change-background-color.directive';
+import { BadgeChefDirective } from './partage/badge-chef/badge-chef.directive';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http);
@@ -49,7 +51,9 @@ export function HttpLoaderFactory(http: HttpClient) {
     HeaderComponent,
     DrawerComponent,
     LangueBoutonComponent,
-    ExemplePipePipe
+    ExemplePipePipe,
+    ChangeBackgroundColorDirective,
+    BadgeChefDirective
   ],
   imports: [
     BrowserModule,
