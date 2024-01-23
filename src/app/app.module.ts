@@ -32,6 +32,7 @@ import { LangueBoutonComponent } from './partage/langue-bouton/langue-bouton.com
 import {MatMenuModule} from "@angular/material/menu";
 import {TranslateLoader, TranslateModule} from '@ngx-translate/core';
 import {TranslateHttpLoader} from "@ngx-translate/http-loader";
+import { ExemplePipePipe } from './partage/exemple-pipe/exemple-pipe.pipe';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http);
@@ -47,7 +48,8 @@ export function HttpLoaderFactory(http: HttpClient) {
     ContactComponent,
     HeaderComponent,
     DrawerComponent,
-    LangueBoutonComponent
+    LangueBoutonComponent,
+    ExemplePipePipe
   ],
   imports: [
     BrowserModule,
