@@ -18,13 +18,18 @@ export class AccueilComponent {
     })
   }
 
-
   /**
    * Returns random people
    */
   random() {
     this.httpClient.get<Person>("http://localhost:3000/api/employe/random").subscribe((personneRandom:Person) => {
       this.employe = personneRandom;
+    })
+  }
+
+  deletePerson():void {
+    this.httpClient.delete("http://localhost:3000/api/employe/"+this.employe.id).subscribe(() => {
+      this.random();
     })
   }
 }

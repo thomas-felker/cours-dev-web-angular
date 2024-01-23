@@ -1,4 +1,4 @@
-import {Component, Input} from '@angular/core';
+import {Component, EventEmitter, Input, Output} from '@angular/core';
 import {Person} from "../../model/Person";
 
 @Component({
@@ -10,8 +10,15 @@ export class CarteComponent {
 
   @Input() employe: Person | undefined;
 
+  @Output()
+  deletePersonEvent: EventEmitter<Person> = new EventEmitter<Person>();
+
   constructor() {
-    //Empty
+    this.deletePersonEvent = new EventEmitter<Person>();
+  }
+
+  delete() {
+    this.deletePersonEvent.emit(this.employe);
   }
 
 }
