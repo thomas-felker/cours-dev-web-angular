@@ -10,6 +10,7 @@ import {ListPersonnelService} from "../partage/service/list-personnel.service";
 export class ListPersonnelComponent implements OnInit {
 
   personnel: Array<Person> = [];
+  view: "card" | "list" = "card";
 
   constructor(private readonly listPersonnelService: ListPersonnelService) {
   }
@@ -20,10 +21,13 @@ export class ListPersonnelComponent implements OnInit {
     });
   }
 
-  deleteEmployee(employee: Person) {
+  deleteEmployee(employee: Person): void {
     this.listPersonnelService.delete(employee.id!).subscribe(personnel => {
       this.personnel = personnel;
     });
   }
 
+  switchView(): void {
+    this.view = this.view === "card" ? "list" : "card";
+  }
 }
