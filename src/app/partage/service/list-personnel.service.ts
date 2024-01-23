@@ -8,7 +8,7 @@ import {environment} from "../../../environments/environment";
   providedIn: 'root'
 })
 
-export class ListPersonnelServiceService {
+export class ListPersonnelService {
 
   private urlServer:any = {};
 
@@ -23,7 +23,6 @@ export class ListPersonnelServiceService {
       // @ts-ignore
       k => (this.urlServer[k] = `${baseUrl}${environment.backend.endpoints[k]}`)
     );
-    console.log(this.urlServer);
   }
 
   fetch(): Observable<Person[]> {

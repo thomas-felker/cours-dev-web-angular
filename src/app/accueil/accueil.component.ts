@@ -1,6 +1,6 @@
 import {Component} from '@angular/core';
 import {Person} from "../model/Person";
-import {ListPersonnelServiceService} from "../partage/service/list-personnel-service.service";
+import {ListPersonnelService} from "../partage/service/list-personnel.service";
 
 @Component({
   selector: 'accueil',
@@ -11,7 +11,7 @@ export class AccueilComponent {
 
   employee!: Person;
 
-  constructor(private readonly listPersonnelService: ListPersonnelServiceService) {
+  constructor(private readonly listPersonnelService: ListPersonnelService) {
   }
 
   ngOnInit(): void {

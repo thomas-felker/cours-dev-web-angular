@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {Person} from "../model/Person";
+import {ListPersonnelService} from "../partage/service/list-personnel.service";
 
 @Component({
   selector: 'app-list-personnel',
@@ -7,12 +9,21 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ListPersonnelComponent implements OnInit {
 
-  constructor() {
-    //Vide
+  personnel: Array<Person> = [];
+
+  constructor(private readonly listPersonnelService: ListPersonnelService) {
   }
 
   ngOnInit(): void {
-    //Vide
+    this.listPersonnelService.fetch().subscribe((personnel: Array<Person>) => {
+      this.personnel = personnel;
+    });
+  }
+
+  deleteEmployee(employee: Person) {
+    this.listPersonnelService.delete(employee.id!).subscribe(personnel => {
+      this.personnel = personnel;
+    });
   }
 
 }
