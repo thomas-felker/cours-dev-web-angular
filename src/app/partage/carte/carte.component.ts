@@ -8,17 +8,17 @@ import {Person} from "../../model/Person";
 })
 export class CarteComponent {
 
-  @Input() employe: Person | undefined;
+  @Input() employee: Person | undefined;
 
   @Output()
-  deletePersonEvent: EventEmitter<Person> = new EventEmitter<Person>();
+  deleteEmployeeEvent: EventEmitter<Person> = new EventEmitter<Person>();
 
   constructor() {
-    this.deletePersonEvent = new EventEmitter<Person>();
+    this.deleteEmployeeEvent = new EventEmitter<Person>();
   }
 
   delete() {
-    this.deletePersonEvent.emit(this.employe);
+    this.deleteEmployeeEvent.emit(this.employee);
   }
 
 }

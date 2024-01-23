@@ -1,6 +1,6 @@
 import {Component} from '@angular/core';
 import {Person} from "../model/Person";
-import {HttpClient} from "@angular/common/http";
+import {ListPersonnelServiceService} from "../partage/service/list-personnel-service.service";
 
 @Component({
   selector: 'accueil',
@@ -9,27 +9,39 @@ import {HttpClient} from "@angular/common/http";
 })
 export class AccueilComponent {
 
-  employe!: Person;
+  employee!: Person;
 
+  constructor(private readonly listPersonnelService: ListPersonnelServiceService) {
+  }
 
-  constructor(private readonly httpClient: HttpClient) {
-    this.httpClient.get<Array<Person>>("http://localhost:3000/api/employe").subscribe((listDuPersonnel:Array<Person>) => {
-      this.employe = listDuPersonnel[0];
-    })
+  ngOnInit(): void {
+    this.getFirstEmployee()
   }
 
   /**
-   * Returns random people
+   * Get the first employee
    */
-  random() {
-    this.httpClient.get<Person>("http://localhost:3000/api/employe/random").subscribe((personneRandom:Person) => {
-      this.employe = personneRandom;
-    })
+  getFirstEmployee() {
+    this.listPersonnelService.fetch().subscribe(employees => {
+      this.employee = employees[0];
+    });
   }
 
-  deletePerson():void {
-    this.httpClient.delete("http://localhost:3000/api/employe/"+this.employe.id).subscribe(() => {
-      this.random();
-    })
+  /**
+   * Get a random employee
+   */
+  getRandomEmployee() {
+    this.listPersonnelService.fetchRandom().subscribe(employee => {
+      this.employee = employee;
+    });
+  }
+
+  /**
+   * Delete an employee
+   */
+  deleteEmployee(employee: Person) {
+    this.listPersonnelService.delete(employee.id!).subscribe(personnel => {
+      this.getRandomEmployee();
+    });
   }
 }
