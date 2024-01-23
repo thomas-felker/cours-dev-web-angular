@@ -1,5 +1,20 @@
-<section>
-  <carte *ngFor="let employee of personnel" [employee]="employee" (deleteEmployeeEvent)="deleteEmployee($event)"></carte>
+
+<section [ngSwitch]="view">
+  <section *ngSwitchCase="'card'">
+    <carte *ngFor="let employee of personnel" [employee]="employee" (deleteEmployeeEvent)="deleteEmployee($event)"></carte>
+  </section>
+
+  <section *ngSwitchCase="'list'">
+    <mat-list>
+      <mat-list-item *ngFor="let employee of personnel">
+        <img mat-list-avatar src="{{ employee.photo }}" alt="Avatar de l'employé"/>
+        <h3 mat-line>{{ employee.prenom }} {{ employee.nom }} </h3>
+        <p mat-line>
+          <span> {{ employee.email }} </span> — <span>{{ employee.telephone }} </span>
+        </p>
+      </mat-list-item>
+    </mat-list>
+  </section>
 </section>
 
 <section class="buttons-fab">
