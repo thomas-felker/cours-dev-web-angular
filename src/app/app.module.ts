@@ -35,6 +35,9 @@ import {TranslateHttpLoader} from "@ngx-translate/http-loader";
 import { ExemplePipePipe } from './partage/exemple-pipe/exemple-pipe.pipe';
 import { ChangeBackgroundColorDirective } from './partage/change-background-color/change-background-color.directive';
 import { BadgeChefDirective } from './partage/badge-chef/badge-chef.directive';
+import { AjoutPopupComponent } from './list-personnel/ajout-popup/ajout-popup.component';
+import { EditionComponent } from './list-personnel/edition/edition.component';
+import { FormulaireComponent } from './partage/formulaire/formulaire.component';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http);
@@ -53,7 +56,10 @@ export function HttpLoaderFactory(http: HttpClient) {
     LangueBoutonComponent,
     ExemplePipePipe,
     ChangeBackgroundColorDirective,
-    BadgeChefDirective
+    BadgeChefDirective,
+    AjoutPopupComponent,
+    EditionComponent,
+    FormulaireComponent
   ],
   imports: [
     BrowserModule,
